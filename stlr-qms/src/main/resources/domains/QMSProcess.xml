@@ -11,10 +11,12 @@
 		<integer name="selectType" selection="qms.process.type.select" required="true" nullable="false"/>
 
 		<string name="code" min="2" max="3" nullable="false" required="true"/>
-		<string name="title" nullable="false" required="true" namecolumn="true" />
+		<string name="title" nullable="false" required="true" namecolumn="true"/>
+		<string name="purpose" nullable="false" required="true" large="true"/>
+
 
 		<many-to-many name="responsibles" ref="com.axelor.apps.hr.db.Employee" title="Responsibles" required="true"/>
-		<many-to-one name="company" ref="com.axelor.apps.base.db.Company" title="Company" required="true" />
+		<many-to-one name="company" ref="com.axelor.apps.base.db.Company" title="Company" required="true"/>
 
 		<!-- Declare this as a m2m to have independent editing of documents from process, we've
 			a m2o on document side which is handled independently -->
