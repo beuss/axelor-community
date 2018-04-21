@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
-	<form name="qms-document-version-form" title="QMS Document Version" model="com.axelor.apps.qms.db.QMSDocumentVersion" id="qms-document-version-form" onNew="qms-document-version-record-default">
+	<form name="qms-document-version-form" title="QMS Document Version" model="fr.stlrconseil.apps.qms.db.QMSDocumentVersion" id="qms-document-version-form" onNew="qms-document-version-record-default">
 		<panel>
 			<field name="document" title="Document" readonly="true" />
 			<field name="versionIndex" required="true" readonly="true"/>
@@ -18,7 +18,7 @@
 		</panel>
 	</form>
 
-	<grid model="com.axelor.apps.qms.db.QMSDocumentVersion" title="QMS document versions" name="qms-document-version-grid" freeSearch="all" editable="false">
+	<grid model="fr.stlrconseil.apps.qms.db.QMSDocumentVersion" title="QMS document versions" name="qms-document-version-grid" freeSearch="all" editable="false">
 		<field name="fullReference" />
 		<field name="versionCreator" />
 		<field name="versionReviewer" />
@@ -26,16 +26,16 @@
 		<field name="versionMetaFile" widget="binary-link" />
 	</grid>
 
-	<action-method name="qms-document-version-set-filename" model="com.axelor.apps.qms.db.QMSDocumentVersion">
-		<call class="com.axelor.apps.qms.web.QMSDocumentVersionController" method="setVersionFileName"/>
+	<action-method name="qms-document-version-set-filename" model="fr.stlrconseil.apps.qms.db.QMSDocumentVersion">
+		<call class="fr.stlrconseil.apps.qms.web.QMSDocumentVersionController" method="setVersionFileName"/>
 	</action-method>
-    
-    <action-record name="qms-document-version-record-default" model="com.axelor.apps.qms.db.QMSDocumentVersion">
-    	<field name="versionCreator" expr="eval:__user__.employee"/>
-    	<field name="versionCreationDate" expr="eval:__date__"/>
-    	<field name="document" expr="eval:__repo__(QMSDocument).find(_parent.id)" if="_parent != null &amp;&amp; _parent.id != null &amp;&amp; _parent._model == 'com.axelor.apps.qms.db.QMSDocument'"/>
-    	<field name="versionIndex" expr="call:com.axelor.apps.qms.service.QMSDocumentVersionService:getNextVersionIndex(__repo__(QMSDocument).find(_parent.id))" if="_parent != null &amp;&amp; _parent.id != null &amp;&amp; _parent._model == 'com.axelor.apps.qms.db.QMSDocument'"/>
-    </action-record>
+
+	<action-record name="qms-document-version-record-default" model="fr.stlrconseil.apps.qms.db.QMSDocumentVersion">
+		<field name="versionCreator" expr="eval:__user__.employee"/>
+		<field name="versionCreationDate" expr="eval:__date__"/>
+		<field name="document" expr="eval:__repo__(QMSDocument).find(_parent.id)" if="_parent != null &amp;&amp; _parent.id != null &amp;&amp; _parent._model == 'fr.stlrconseil.apps.qms.db.QMSDocument'"/>
+		<field name="versionIndex" expr="call:fr.stlrconseil.apps.qms.service.QMSDocumentVersionService:getNextVersionIndex(__repo__(QMSDocument).find(_parent.id))" if="_parent != null &amp;&amp; _parent.id != null &amp;&amp; _parent._model == 'fr.stlrconseil.apps.qms.db.QMSDocument'"/>
+	</action-record>
 
     <action-validate name="qms-document-version-validate-reviewer">
     	<error if="versionReviewer != null &amp;&amp; versionReviewer.id == versionCreator.id" message="Reviewer and author must be different" action="qms-document-version-record-clear-reviewer"/>
@@ -45,11 +45,11 @@
     	<error if="versionApprover != null &amp;&amp; (versionApprover.id == versionCreator.id || versionApprover.id == versionReviewer.id)" message="Approver, reviewer and author must be different" action="qms-document-version-record-clear-approver"/>
     </action-validate>
     
-    <action-record name="qms-document-version-record-clear-reviewer" model="com.axelor.apps.qms.db.QMSDocumentVersion">
+    <action-record name="qms-document-version-record-clear-reviewer" model="fr.stlrconseil.apps.qms.db.QMSDocumentVersion">
     	<field name="versionReviewer" expr="eval:null"/>
     </action-record>
     
-    <action-record name="qms-document-version-record-clear-approver" model="com.axelor.apps.qms.db.QMSDocumentVersion">
+    <action-record name="qms-document-version-record-clear-approver" model="fr.stlrconseil.apps.qms.db.QMSDocumentVersion">
     	<field name="versionApprover" expr="eval:null"/>
     </action-record>
     
@@ -61,11 +61,11 @@
      	<error message="Approval date cannot be before review date" if="versionApprovalDate != null &amp;&amp; versionApprovalDate.isBefore(versionReviewDate)" action="qms-document-version-record-clear-approval-date" />
      </action-validate>
     
-    <action-record name="qms-document-version-record-clear-review-date" model="com.axelor.apps.qms.db.QMSDocumentVersion">
+    <action-record name="qms-document-version-record-clear-review-date" model="fr.stlrconseil.apps.qms.db.QMSDocumentVersion">
     	<field name="versionReviewDate" expr="eval:null"/>
     </action-record>
     
-    <action-record name="qms-document-version-record-clear-approval-date" model="com.axelor.apps.qms.db.QMSDocumentVersion">
+    <action-record name="qms-document-version-record-clear-approval-date" model="fr.stlrconseil.apps.qms.db.QMSDocumentVersion">
     	<field name="versionApprovalDate" expr="eval:null"/>
     </action-record>
 </object-views>

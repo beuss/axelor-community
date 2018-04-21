@@ -1,18 +1,19 @@
-package com.axelor.apps.qms.web;
+package fr.stlrconseil.apps.qms.web;
 
 import java.util.Collections;
 
 import org.apache.commons.io.FilenameUtils;
 
-import com.axelor.apps.qms.db.QMSDocument;
-import com.axelor.apps.qms.db.QMSDocumentVersion;
-import com.axelor.apps.qms.db.repo.QMSDocumentRepository;
 import com.axelor.common.StringUtils;
 import com.axelor.meta.db.MetaFile;
 import com.axelor.rpc.ActionRequest;
 import com.axelor.rpc.ActionResponse;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+
+import fr.stlrconseil.apps.qms.db.QMSDocument;
+import fr.stlrconseil.apps.qms.db.QMSDocumentVersion;
+import fr.stlrconseil.apps.qms.db.repo.QMSDocumentRepository;
 
 @Singleton
 public class QMSDocumentVersionController {

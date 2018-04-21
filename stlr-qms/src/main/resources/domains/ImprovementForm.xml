@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <domain-models xmlns="http://axelor.com/xml/ns/domain-models" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
 
-	<module name="axelor-qms" package="com.axelor.apps.qms.db" />
+	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db" />
 
 	<entity name="ImprovementForm" lang="java" cachable="true" sequential="true">
 		<!-- Internal status -->

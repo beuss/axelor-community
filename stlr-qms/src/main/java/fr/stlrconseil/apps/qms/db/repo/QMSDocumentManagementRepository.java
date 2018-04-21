@@ -1,13 +1,14 @@
-package com.axelor.apps.qms.db.repo;
+package fr.stlrconseil.apps.qms.db.repo;
 
 import javax.persistence.PersistenceException;
 
 import com.axelor.apps.base.service.administration.SequenceService;
-import com.axelor.apps.qms.db.QMSDocument;
-import com.axelor.apps.qms.exception.IExceptionMessage;
 import com.axelor.i18n.I18n;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
+
+import fr.stlrconseil.apps.qms.db.QMSDocument;
+import fr.stlrconseil.apps.qms.exception.IExceptionMessage;
 
 public class QMSDocumentManagementRepository extends QMSDocumentRepository {
 

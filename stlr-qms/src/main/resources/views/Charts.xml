@@ -69,7 +69,7 @@
 		<series key="canceledcnt" type="bar" title="Canceled forms"/>
 	</chart>
 
-	<action-record name="action-qms-improvement-form-record-monthly-stats" model="com.axelor.apps.qms.db.ImprovementForm">
+	<action-record name="action-qms-improvement-form-record-monthly-stats" model="fr.stlrconseil.apps.qms.db.ImprovementForm">
 		<field name="toDate" expr="eval:LocalDate.now()" />
 		<field name="fromDate" expr="eval:LocalDate.now().minusMonths(12)" />
 	</action-record>

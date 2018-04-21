@@ -5,7 +5,7 @@
 	We could use a selection but that would be far less flexible
 	for users.
 -->
-	<module name="axelor-qms" package="com.axelor.apps.qms.db" />
+	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db" />
 	<entity name="QMSDocumentType" lang="java" cachable="true" sequential="true">
 		<string name="code" min="2" max="3" nullable="false" required="true" />
 		<string name="title" title="Title" nullable="false" required="true" namecolumn="true" />

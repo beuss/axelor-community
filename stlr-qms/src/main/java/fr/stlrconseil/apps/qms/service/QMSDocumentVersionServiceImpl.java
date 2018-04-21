@@ -1,9 +1,9 @@
-package com.axelor.apps.qms.service;
+package fr.stlrconseil.apps.qms.service;
 
 import java.util.List;
 
-import com.axelor.apps.qms.db.QMSDocument;
-import com.axelor.apps.qms.db.QMSDocumentVersion;
+import fr.stlrconseil.apps.qms.db.QMSDocument;
+import fr.stlrconseil.apps.qms.db.QMSDocumentVersion;
 
 public class QMSDocumentVersionServiceImpl implements QMSDocumentVersionService {
 	@Override

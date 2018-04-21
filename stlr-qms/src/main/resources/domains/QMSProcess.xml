@@ -6,7 +6,7 @@
 	We cannot use QualityProcess name since its used in axelor-quality for a
 	totally different purpose.
 -->
-	<module name="axelor-qms" package="com.axelor.apps.qms.db" />
+	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db" />
 	<entity name="QMSProcess" lang="java" cachable="true" sequential="true">
 		<integer name="selectType" selection="qms.process.type.select" required="true" nullable="false"/>
 
@@ -20,7 +20,7 @@
 
 		<!-- Declare this as a m2m to have independent editing of documents from process, we've
 			a m2o on document side which is handled independently -->
-		<many-to-many name="documents" ref="com.axelor.apps.qms.db.QMSDocument"/>
+		<many-to-many name="documents" ref="fr.stlrconseil.apps.qms.db.QMSDocument"/>
 		<unique-constraint columns="company,code"/>
 	</entity>
 </domain-models>

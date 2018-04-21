@@ -1,13 +1,14 @@
-package com.axelor.apps.qms.web;
+package fr.stlrconseil.apps.qms.web;
 
-import com.axelor.apps.qms.db.ImprovementForm;
-import com.axelor.apps.qms.db.repo.ImprovementFormRepository;
-import com.axelor.apps.qms.service.ImprovementFormService;
 import com.axelor.exception.AxelorException;
 import com.axelor.rpc.ActionRequest;
 import com.axelor.rpc.ActionResponse;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+
+import fr.stlrconseil.apps.qms.db.ImprovementForm;
+import fr.stlrconseil.apps.qms.db.repo.ImprovementFormRepository;
+import fr.stlrconseil.apps.qms.service.ImprovementFormService;
 
 @Singleton
 public class ImprovementFormController {

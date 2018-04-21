@@ -5,7 +5,7 @@ apply {
 }
 
 axelor {
-	title "Axelor :: QMS"
+	title "STLR :: QMS"
 	description "Quality Management System"
 	removable true
 }

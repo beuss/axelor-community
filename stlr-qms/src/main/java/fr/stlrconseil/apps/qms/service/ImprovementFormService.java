@@ -1,9 +1,10 @@
-package com.axelor.apps.qms.service;
+package fr.stlrconseil.apps.qms.service;
 
 import com.axelor.apps.base.db.Company;
-import com.axelor.apps.qms.db.ImprovementForm;
 import com.axelor.exception.AxelorException;
 import com.google.inject.persist.Transactional;
+
+import fr.stlrconseil.apps.qms.db.ImprovementForm;
 
 public interface ImprovementFormService {
 	/**

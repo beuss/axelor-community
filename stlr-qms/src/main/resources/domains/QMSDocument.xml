@@ -6,15 +6,15 @@
 	Detailed information are stored in the version, only constant
 	information are stored here.
 -->
-	<module name="axelor-qms" package="com.axelor.apps.qms.db" />
+	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db" />
 
 	<entity name="QMSDocument" lang="java" cachable="true" sequential="true">
 		<many-to-one name="company" ref="com.axelor.apps.base.db.Company" required="true"/>
-		<many-to-one name="process" ref="com.axelor.apps.qms.db.QMSProcess" required="true"/>
+		<many-to-one name="process" ref="fr.stlrconseil.apps.qms.db.QMSProcess" required="true"/>
 		<!-- This is fake field, only here to allow in-process editing, it'll always contain one
 		unique entry, synced with process -->
-		<many-to-many name="processes" ref="com.axelor.apps.qms.db.QMSProcess" mappedBy="documents"/>
-		<many-to-one name="type" ref="com.axelor.apps.qms.db.QMSDocumentType" required="true" />
+		<many-to-many name="processes" ref="fr.stlrconseil.apps.qms.db.QMSProcess" mappedBy="documents"/>
+		<many-to-one name="type" ref="fr.stlrconseil.apps.qms.db.QMSDocumentType" required="true" />
 		<string name="title" nullable="false" required="true" title="Title"/>
 		<!-- [process code]-[type code]-[quality document sequence]
 		We cannot set nullable="false" since we generate it on save which is called after first
@@ -30,8 +30,8 @@
 
 		<many-to-many name="responsibles" ref="com.axelor.apps.hr.db.Employee" title="Responsibles" required="true"/>
 
-		<one-to-many name="versions" ref="com.axelor.apps.qms.db.QMSDocumentVersion" mappedBy="document" orderBy="length(versionIndex), versionIndex"/>
-		<one-to-one ref="com.axelor.apps.qms.db.QMSDocumentVersion" name="currentVersion" readonly="true" title="Last version">
+		<one-to-many name="versions" ref="fr.stlrconseil.apps.qms.db.QMSDocumentVersion" mappedBy="document" orderBy="length(versionIndex), versionIndex"/>
+		<one-to-one ref="fr.stlrconseil.apps.qms.db.QMSDocumentVersion" name="currentVersion" readonly="true" title="Last version">
 		<![CDATA[
 			List<QMSDocumentVersion> versions = getVersions();
 			if(versions == null || versions.size() == 0) return null;

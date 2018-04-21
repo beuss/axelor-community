@@ -8,14 +8,14 @@
 
 	<menuitem name="qms-improvement-forms-all" parent="qms-improvement-forms-root" title="Improvement forms list" action="qms.improvementForm.all"/>
 
-	<action-view name="qms.improvementForm.all" title="Improvement forms" model="com.axelor.apps.qms.db.ImprovementForm">
+	<action-view name="qms.improvementForm.all" title="Improvement forms" model="fr.stlrconseil.apps.qms.db.ImprovementForm">
 		<view type="grid" name="qms-improvement-form-grid"/>
 		<view type="form" name="qms-improvement-form-form"/>
 	</action-view>
 
 	<menuitem name="qms-improvement-forms-mine" parent="qms-improvement-forms-root" title="My improvement forms" action="qms.improvementForm.mine"/>
 
-	<action-view name="qms.improvementForm.mine" model="com.axelor.apps.qms.db.ImprovementForm" title="My improvement forms">
+	<action-view name="qms.improvementForm.mine" model="fr.stlrconseil.apps.qms.db.ImprovementForm" title="My improvement forms">
 		<view name="qms-improvement-form-grid" type="grid"/>
 		<view name="qms-improvement-form-form" type="form"/>
 		<domain>self.createdBy = :__user__ OR (select employee.id from User u where u = :__user__) in (select id from self.responsibles)</domain>
@@ -23,7 +23,7 @@
 
 	<menuitem name="qms-improvement-forms-dashboard" parent="qms-improvement-forms-root" title="Dashboard" action="qms.improvementForm.dashboard"/>
 
-	<action-view name="qms.improvementForm.dashboard" title="Dashboard" model="com.axelor.apps.qms.db.ImprovementForm">
+	<action-view name="qms.improvementForm.dashboard" title="Dashboard" model="fr.stlrconseil.apps.qms.db.ImprovementForm">
         <view type="dashboard" name="qms.improvementForm.dashboard.1" />
 	</action-view>
 
@@ -31,7 +31,7 @@
 
 	<menuitem name="qms-document-all" parent="qms-documents-root" title="QMS Documents list"  action="qms.document.all"/>
 
-	<action-view name="qms.document.all" title="QMS Documents list" model="com.axelor.apps.qms.db.QMSDocument">
+	<action-view name="qms.document.all" title="QMS Documents list" model="fr.stlrconseil.apps.qms.db.QMSDocument">
 		<view type="grid" name="qms-document-grid"/>
 		<view type="form" name="qms-document-form"/>
 	</action-view>
@@ -40,14 +40,14 @@
 
 	<menuitem name="qms-process-config" parent="qms-config-root" title="QMS Processes"  action="qms.process.all"/>
 
-	<action-view name="qms.process.all" title="QMS Processes" model="com.axelor.apps.qms.db.QMSProcess">
+	<action-view name="qms.process.all" title="QMS Processes" model="fr.stlrconseil.apps.qms.db.QMSProcess">
 		<view type="grid" name="qms-process-grid"/>
 		<view type="form" name="qms-process-form"/>
 	</action-view>
 
 	<menuitem name="qms-document-type-config" parent="qms-config-root" title="QMS Document Types"  action="qms.documentType.all"/>
 
-	<action-view name="qms.documentType.all" title="QMS Document Types" model="com.axelor.apps.qms.db.QMSDocumentType">
+	<action-view name="qms.documentType.all" title="QMS Document Types" model="fr.stlrconseil.apps.qms.db.QMSDocumentType">
 		<view type="grid" name="qms-document-type-grid"/>
 		<view type="form" name="qms-document-type-form"/>
 	</action-view>

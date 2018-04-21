@@ -1,6 +1,6 @@
-package com.axelor.apps.qms.service;
+package fr.stlrconseil.apps.qms.service;
 
-import com.axelor.apps.qms.db.QMSDocument;
+import fr.stlrconseil.apps.qms.db.QMSDocument;
 
 public interface QMSDocumentVersionService {
 	/**

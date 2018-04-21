@@ -4,10 +4,10 @@
 	Represents a specific version of a document in the quality
 	management system.
 -->
-	<module name="axelor-qms" package="com.axelor.apps.qms.db" />
+	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db" />
 
 	<entity name="QMSDocumentVersion" lang="java" cachable="true" sequential="true">
-		<many-to-one name="document" ref="com.axelor.apps.qms.db.QMSDocument" readonly="true"/>
+		<many-to-one name="document" ref="fr.stlrconseil.apps.qms.db.QMSDocument" readonly="true"/>
 		
 		<string name="fullReference" namecolumn="true">
 		<![CDATA[

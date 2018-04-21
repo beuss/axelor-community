@@ -1,4 +1,4 @@
-package com.axelor.apps.qms.service;
+package fr.stlrconseil.apps.qms.service;
 
 import java.lang.invoke.MethodHandles;
 import java.time.LocalDate;
@@ -9,14 +9,15 @@ import org.slf4j.LoggerFactory;
 import com.axelor.apps.base.db.Company;
 import com.axelor.apps.base.db.IAdministration;
 import com.axelor.apps.base.service.administration.SequenceService;
-import com.axelor.apps.qms.db.ImprovementForm;
-import com.axelor.apps.qms.db.repo.ImprovementFormRepository;
-import com.axelor.apps.qms.exception.IExceptionMessage;
 import com.axelor.exception.AxelorException;
 import com.axelor.exception.db.IException;
 import com.axelor.i18n.I18n;
 import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
+
+import fr.stlrconseil.apps.qms.db.ImprovementForm;
+import fr.stlrconseil.apps.qms.db.repo.ImprovementFormRepository;
+import fr.stlrconseil.apps.qms.exception.IExceptionMessage;
 
 public class ImprovementFormServiceImpl implements ImprovementFormService {
 	private final Logger logger = LoggerFactory.getLogger( MethodHandles.lookup().lookupClass() );

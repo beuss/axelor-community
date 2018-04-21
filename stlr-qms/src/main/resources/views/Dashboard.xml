@@ -7,7 +7,7 @@
 		<dashlet action="qms-improvement-forms-dashboard-global-stats" height="350" canSearch="true" colSpan="12"/>
 	</dashboard>
 	
-	<action-view name="qms-improvement-forms-dashboard-global-stats" title="Monthly statistics" model="com.axelor.apps.qms.db.ImprovementForm">
+	<action-view name="qms-improvement-forms-dashboard-global-stats" title="Monthly statistics" model="fr.stlrconseil.apps.qms.db.ImprovementForm">
 		<view type="chart" name="qms-improvement-form-chart"/>
 		<context name="_activeCompany" expr="eval:__user__.activeCompany?.id"/>
 	</action-view>

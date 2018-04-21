@@ -1,9 +1,11 @@
-package com.axelor.apps.qms.service;
+package fr.stlrconseil.apps.qms.service;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import fr.stlrconseil.apps.qms.service.QMSDocumentVersionServiceImpl;
 
 public class QMSDocumentVersionServiceImplTest {
 	private QMSDocumentVersionServiceImpl service;
