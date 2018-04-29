@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+	<form name="qms-process-input-data-form" title="QMS Process Input Data" model="fr.stlrconseil.apps.qms.db.QMSProcessData" id="qms-process-input-data-form" width="large" onNew="qms-process-data-record-input-data-on-new">
+		<panel>
+			<field name="sourceType" onChange="qms-process-data-record-clear-source" colSpan="6" title="Source"/>
+			<field name="internalSource" hideIf="sourceType != 'INTERNAL'" colSpan="6" onChange="qms-process-data-valid-source-is-not-consumer"/>
+			<field name="externalSource" hideIf="sourceType != 'EXTERNAL'" colSpan="6" canNew="true"/>
+			<field name="title" title="Title" colSpan="12"/>
+			<field name="expectations" title="Consumers' expectations" colSpan="12" widget="Html"/>
+			
+			<field name="internalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSProcess" colSpan="12" onChange="qms-process-data-valid-source-is-not-consumer" canNew="false" canEdit="false"/>
+		</panel>
+	</form>
+
+	<form name="qms-process-output-data-form" title="QMS Process Output Data" model="fr.stlrconseil.apps.qms.db.QMSProcessData" id="qms-process-output-data-form" width="large" onNew="qms-process-data-record-output-data-on-new">
+		<panel>
+			<field name="sourceType" colSpan="6" readonly="true"/>
+			<field name="internalSource" colSpan="6" readonly="true" onChange="qms-process-data-valid-source-is-not-consumer"/>
+
+			<field name="title" title="Title" colSpan="12"/>
+			<field name="expectations" title="Consumers' expectations" colSpan="12" widget="Html"/>
+
+			<field name="internalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSProcess" colSpan="12" onChange="qms-process-data-valid-source-is-not-consumer" canNew="false" canEdit="false"/>
+			<field name="externalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint" colSpan="12"/>
+		</panel>
+	</form>
+	
+	<form name="qms-process-data-form" title="QMS Process Data" model="fr.stlrconseil.apps.qms.db.QMSProcessData" id="qms-process-data-form" >
+		<panel>
+			<field name="sourceType" onChange="qms-process-data-record-clear-source" colSpan="6" title="Source"/>
+			<field name="internalSource" hideIf="sourceType != 'INTERNAL'" colSpan="6"/>
+			<field name="externalSource" hideIf="sourceType != 'EXTERNAL'" colSpan="6" canNew="true"/>
+			<field name="title" title="Title" colSpan="12"/>
+			<field name="expectations" title="Consumers' expectations" colSpan="12" widget="Html"/>
+			
+			<field name="internalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSProcess" colSpan="12" canNew="false" canEdit="false"/>
+			<field name="externalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint" colSpan="12"/>
+		</panel>
+	</form>
+
+	<grid model="fr.stlrconseil.apps.qms.db.QMSProcessData" title="QMS process data" name="qms-process-data-grid" freeSearch="all" editable="false">
+		<field name="sourceType"/>
+		<field name="sourceTitle"/>
+		<field name="title"/>
+	</grid>
+
+	<action-record name="qms-process-data-record-clear-source" model="fr.stlrconseil.apps.qms.db.QMSProcessData">
+		<field name="internalSource" expr="eval:null" if="sourceType != fr.stlrconseil.apps.qms.db.QMSProcessDataSourceType.INTERNAL"/>
+		<field name="externalSource" expr="eval:null" if="sourceType != fr.stlrconseil.apps.qms.db.QMSProcessDataSourceType.EXTERNAL"/>
+	</action-record>
+	
+	<action-record name="qms-process-data-record-output-data-on-new" model="fr.stlrconseil.apps.qms.db.QMSProcessData">
+		<field name="sourceType" expr="eval:fr.stlrconseil.apps.qms.db.QMSProcessDataSourceType.INTERNAL"/>
+		<field name="internalSource" expr="eval:__repo__(QMSProcess).find(_parent.id)" if="_parent != null &amp;&amp; _parent.id != null &amp;&amp; _parent._model == 'fr.stlrconseil.apps.qms.db.QMSProcess'"/>
+	</action-record>
+	
+	<action-record name="qms-process-data-record-input-data-on-new" model="fr.stlrconseil.apps.qms.db.QMSProcessData">
+		<field name="internalConsumers" expr="eval:com.google.common.collect.Sets.newHashSet(__repo__(QMSProcess).find(_parent.id))" if="_parent != null &amp;&amp; _parent.id != null &amp;&amp; _parent._model == 'fr.stlrconseil.apps.qms.db.QMSProcess'"/>
+	</action-record>
+	
+	<action-validate name="qms-process-data-valid-source-is-not-consumer">
+		<error message="Data source cannot be one of its consumers" if="internalConsumers.contains(internalSource)" />
+	</action-validate>
+	
+</object-views>

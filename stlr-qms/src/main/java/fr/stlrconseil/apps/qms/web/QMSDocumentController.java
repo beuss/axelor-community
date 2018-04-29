@@ -20,10 +20,13 @@ public class QMSDocumentController {
 		this.documentService = documentService;
 	}
 
-
-
 	public void addDocumentToProcess(ActionRequest request, ActionResponse response) {
 		QMSDocument document = documentRepository.find(request.getContext().asType(QMSDocument.class).getId());
 		documentService.addDocumentToProcess(document);
 	}
+
+	public void cleanOrphanedDocuments(ActionRequest request, ActionResponse response) {
+		documentRepository.cleanOrphanedDocuments();
+	}
+
 }

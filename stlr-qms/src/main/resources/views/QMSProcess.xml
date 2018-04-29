@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
-	<form name="qms-process-form" title="QMS Process" model="fr.stlrconseil.apps.qms.db.QMSProcess" id="qms-process-form" width="large">
+	<form name="qms-process-form" title="QMS Process" model="fr.stlrconseil.apps.qms.db.QMSProcess" id="qms-process-form" width="large" onSave="save,qms-process-clean-orphaned-documents">
 		<panel>
-			<field name="company" title="Company" readonlyIf="id != null" />
+			<field name="company" title="Company" readonlyIf="id != null"/>
 			<spacer/>
-			<field name="selectType" title="Type" required="true" selection="qms.process.type.select" readonlyIf="id != null" />
+			<field name="selectType" title="Type" required="true" selection="qms.process.type.select" readonlyIf="id != null"/>
 			<field name="code" title="Code" required="true" readonlyIf="id != null" pattern="[A-Z0-9]{2,3}" help="Alphanumeric code (2 to 3 chars)" x-bind="{{code|unaccent|uppercase}}"/>
 
-			<field name="title" title="Title" required="true" colSpan="12" />
+			<field name="title" title="Title" required="true" colSpan="12"/>
 
-			<field name="purpose" title="Purpose" required="true" colSpan="12" widget="Html" />
+			<field name="purpose" title="Purpose" required="true" colSpan="12" widget="Html"/>
 
 			<field name="responsibles" title="Responsibles" widget="TagSelect" colSpan="12" canNew="false" form-view="employee-form"/>
 		</panel>
 		<panel-tabs hideIf="id == null">
-			<panel-related field="documents" title="Documents"></panel-related>
+			<panel-related field="documents" title="Documents"/>
+			<panel-related field="inputData" title="Input data" form-view="qms-process-input-data-form" canNew="true"/>
+			<panel-related field="outputData" title="Output data" form-view="qms-process-output-data-form" canNew="true"/>
 		</panel-tabs>
 	</form>
 
 	<grid model="fr.stlrconseil.apps.qms.db.QMSProcess" title="QMS processes" name="qms-process-grid" freeSearch="all" editable="false">
-		<field name="company" />
-		<field name="code" />
-		<field name="title" />
+		<field name="company"/>
+		<field name="code"/>
+		<field name="title"/>
 	</grid>
+
+	<action-method name="qms-process-clean-orphaned-documents">
+		<call class="fr.stlrconseil.apps.qms.web.QMSDocumentController" method="cleanOrphanedDocuments"/>
+	</action-method>
+
 </object-views>

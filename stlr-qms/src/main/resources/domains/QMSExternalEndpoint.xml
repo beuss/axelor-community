@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+<!--
+	Represents an endpoint for processes data that is not another process.
+	This exists only because there's no way to use @EmbeddedCollection through
+	XML mapping (otherwhise we'll use String directly).
+-->
+	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db" />
+	<entity name="QMSExternalEndpoint" lang="java" cachable="true" sequential="true">
+		<string name="title" nullable="false" required="true" namecolumn="true" />
+		
+		<unique-constraint columns="title"/>
+	</entity>
+	
+</domain-models>

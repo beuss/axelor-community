@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+<!--
+	Represents data used by a QMSProcess. Data is produced by one
+	process (or an external third party) and can be consumed by one
+	or several processed.
+-->
+	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db"/>
+	<entity name="QMSProcessData" lang="java" cachable="true" sequential="true">
+		<entity-listener listenerClass="fr.stlrconseil.apps.qms.db.repo.QMSProcessDataLifeCycleListener"/>
+	
+		<enum name="sourceType" ref="QMSProcessDataSourceType" required="true"/>
+		<many-to-one name="externalSource" ref="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint"/>
+		<many-to-one name="internalSource" ref="fr.stlrconseil.apps.qms.db.QMSProcess"/>
+		<string name="sourceTitle" title="Source title" readonly="true">
+		<![CDATA[
+			return sourceType == QMSProcessDataSourceType.INTERNAL ? getInternalSource().getTitle() : getExternalSource().getTitle();
+		]]>
+		</string>
+
+		<string name="title" nullable="false" required="true" namecolumn="true"/>
+		<string name="expectations" nullable="false" required="true" large="true"/>
+
+		<many-to-many name="internalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSProcess"/>
+		<many-to-many name="externalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint"/>
+	</entity>
+
+	<enum name="QMSProcessDataSourceType">
+		<item name="INTERNAL" title="Internal"/>
+		<item name="EXTERNAL" title="External"/>
+	</enum>
+</domain-models>

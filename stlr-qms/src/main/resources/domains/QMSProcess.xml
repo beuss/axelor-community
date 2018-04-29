@@ -18,8 +18,10 @@
 		<many-to-many name="responsibles" ref="com.axelor.apps.hr.db.Employee" title="Responsibles" required="true"/>
 		<many-to-one name="company" ref="com.axelor.apps.base.db.Company" title="Company" required="true"/>
 
-		<!-- Declare this as a m2m to have independent editing of documents from process, we've
-			a m2o on document side which is handled independently -->
+		<many-to-many name="inputData" ref="fr.stlrconseil.apps.qms.db.QMSProcessData" mappedBy="internalConsumers"/>
+		<one-to-many name="outputData" ref="fr.stlrconseil.apps.qms.db.QMSProcessData" mappedBy="internalSource"/>
+
+		<!-- Declare this as a m2m to have independent editing of documents from process, we've a m2o on document side which is handled independently -->
 		<many-to-many name="documents" ref="fr.stlrconseil.apps.qms.db.QMSDocument"/>
 		<unique-constraint columns="company,code"/>
 	</entity>
