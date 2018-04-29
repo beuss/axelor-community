@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
 
-	<menuitem name="menu-qms-root" order="-100" if="__config__.app.isApp('qms')" title="QMS" icon="fa-check" icon-background="#3f6bb9"/>
+	<menuitem name="menu-qms-root" order="-100" if="__config__.app.isApp('qms')" title="QMS" icon="fa-bar-chart" icon-background="#3f6bb9"/>
 
-	<menuitem name="qms-improvement-forms-root" parent="menu-qms-root" title="Improvement forms" />
+
+	<menuitem name="qms-processes" parent="menu-qms-root" title="QMS Processes" action="qms.process.all" order="10"/>
+
+	<action-view name="qms.process.all" title="QMS Processes" model="fr.stlrconseil.apps.qms.db.QMSProcess">
+		<view type="grid" name="qms-process-grid"/>
+		<view type="form" name="qms-process-form"/>
+	</action-view>
+
+	<menuitem title="Documents" parent="menu-qms-root" name="qms-documents-root" order="20"/>
+
+	<menuitem name="qms-document-all" parent="qms-documents-root" title="QMS Documents list" action="qms.document.all"/>
+
+	<action-view name="qms.document.all" title="QMS Documents list" model="fr.stlrconseil.apps.qms.db.QMSDocument">
+		<view type="grid" name="qms-document-grid"/>
+		<view type="form" name="qms-document-form"/>
+	</action-view>
+
+
+	<menuitem name="qms-improvement-forms-root" parent="menu-qms-root" title="Improvement forms" order="30"/>
 
 	<menuitem name="qms-improvement-forms-all" parent="qms-improvement-forms-root" title="Improvement forms list" action="qms.improvementForm.all"/>
 
@@ -24,28 +42,13 @@
 	<menuitem name="qms-improvement-forms-dashboard" parent="qms-improvement-forms-root" title="Dashboard" action="qms.improvementForm.dashboard"/>
 
 	<action-view name="qms.improvementForm.dashboard" title="Dashboard" model="fr.stlrconseil.apps.qms.db.ImprovementForm">
-        <view type="dashboard" name="qms.improvementForm.dashboard.1" />
+		<view type="dashboard" name="qms.improvementForm.dashboard.1"/>
 	</action-view>
 
-	<menuitem title="Documents" parent="menu-qms-root" name="qms-documents-root" />
 
-	<menuitem name="qms-document-all" parent="qms-documents-root" title="QMS Documents list"  action="qms.document.all"/>
+	<menuitem name="qms-config-root" parent="menu-qms-root" title="Configuration" order="100"/>
 
-	<action-view name="qms.document.all" title="QMS Documents list" model="fr.stlrconseil.apps.qms.db.QMSDocument">
-		<view type="grid" name="qms-document-grid"/>
-		<view type="form" name="qms-document-form"/>
-	</action-view>
-
-	<menuitem name="qms-config-root" parent="menu-qms-root" title="Configuration"/>
-
-	<menuitem name="qms-process-config" parent="qms-config-root" title="QMS Processes"  action="qms.process.all"/>
-
-	<action-view name="qms.process.all" title="QMS Processes" model="fr.stlrconseil.apps.qms.db.QMSProcess">
-		<view type="grid" name="qms-process-grid"/>
-		<view type="form" name="qms-process-form"/>
-	</action-view>
-
-	<menuitem name="qms-document-type-config" parent="qms-config-root" title="QMS Document Types"  action="qms.documentType.all"/>
+	<menuitem name="qms-document-type-config" parent="qms-config-root" title="QMS Document Types" action="qms.documentType.all"/>
 
 	<action-view name="qms.documentType.all" title="QMS Document Types" model="fr.stlrconseil.apps.qms.db.QMSDocumentType">
 		<view type="grid" name="qms-document-type-grid"/>
