@@ -8,7 +8,7 @@
 -->
 	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db" />
 
-	<entity name="QMSDocument" lang="java" cachable="true" sequential="true">
+	<entity name="QMSDocument" lang="java" cachable="true" sequential="true" repository="abstract">
 		<many-to-one name="company" ref="com.axelor.apps.base.db.Company" required="true"/>
 		<many-to-one name="process" ref="fr.stlrconseil.apps.qms.db.QMSProcess" required="true"/>
 		<!-- This is fake field, only here to allow in-process editing, it'll always contain one

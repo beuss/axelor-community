@@ -2,8 +2,6 @@ package fr.stlrconseil.apps.qms.module;
 
 import com.axelor.app.AxelorModule;
 
-import fr.stlrconseil.apps.qms.db.repo.QMSDocumentManagementRepository;
-import fr.stlrconseil.apps.qms.db.repo.QMSDocumentRepository;
 import fr.stlrconseil.apps.qms.service.ImprovementFormService;
 import fr.stlrconseil.apps.qms.service.ImprovementFormServiceImpl;
 import fr.stlrconseil.apps.qms.service.QMSDocumentService;
@@ -18,7 +16,6 @@ public class QMSModule extends AxelorModule {
 		bind(ImprovementFormService.class).to(ImprovementFormServiceImpl.class);
 		bind(QMSDocumentService.class).to(QMSDocumentServiceImpl.class);
 		bind(QMSDocumentVersionService.class).to(QMSDocumentVersionServiceImpl.class);
-		bind(QMSDocumentRepository.class).to(QMSDocumentManagementRepository.class);
 	}
 
 }
