@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+
+	<form name="qms-external-endpoint-form" title="QMS External Endpoint" model="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint">
+		<panel>
+			<field name="title"/>
+		</panel>
+	</form>
+
+	<grid name="qms-external-endpoint-grid" title="Qms external endpoints" model="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint" edit-icon="true">
+		<field name="title"/>
+	</grid>
+</object-views>
