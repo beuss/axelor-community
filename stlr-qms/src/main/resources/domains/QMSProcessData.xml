@@ -8,7 +8,7 @@
 	<module name="stlr-qms" package="fr.stlrconseil.apps.qms.db"/>
 	<entity name="QMSProcessData" lang="java" cachable="true" sequential="true">
 		<entity-listener listenerClass="fr.stlrconseil.apps.qms.db.repo.QMSProcessDataLifeCycleListener"/>
-	
+
 		<enum name="sourceType" ref="QMSProcessDataSourceType" required="true"/>
 		<many-to-one name="externalSource" ref="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint"/>
 		<many-to-one name="internalSource" ref="fr.stlrconseil.apps.qms.db.QMSProcess"/>
@@ -23,6 +23,8 @@
 
 		<many-to-many name="internalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSProcess"/>
 		<many-to-many name="externalConsumers" ref="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint"/>
+
+		<many-to-many name="documents" ref="fr.stlrconseil.apps.qms.db.QMSDocument"/>
 	</entity>
 
 	<enum name="QMSProcessDataSourceType">
