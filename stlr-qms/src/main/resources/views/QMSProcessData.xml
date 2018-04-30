@@ -9,8 +9,8 @@
 			<field name="expectations" title="Consumers' expectations" colSpan="12" widget="Html"/>
 		</panel>
 		<panel-tabs>
-			<panel-related field="internalConsumers" onChange="qms-process-data-valid-source-is-not-consumer" canNew="false" canEdit="false"/>
-			<panel-related field="documents" title="Attached documents" canSelect="true" canNew="true"/>
+			<panel-related field="internalConsumers" onChange="qms-process-data-valid-source-is-not-consumer" canNew="false" canEdit="false" showIf="$readonly() == false || internalConsumers.length > 0"/>
+			<panel-related field="documents" title="Attached documents" canSelect="true" canNew="true" showIf="$readonly() == false || documents > 0"/>
 		</panel-tabs>
 	</form>
 
@@ -27,9 +27,9 @@
 			<field name="expectations" title="Consumers' expectations" colSpan="12" widget="Html"/>
 		</panel>
 		<panel-tabs>
-			<panel-related field="internalConsumers" onChange="qms-process-data-valid-source-is-not-consumer" canNew="false" canEdit="false"/>
-			<panel-related field="externalConsumers"/>
-			<panel-related field="documents" title="Attached documents" canSelect="true" canNew="true"/>
+			<panel-related field="internalConsumers" onChange="qms-process-data-valid-source-is-not-consumer" canNew="false" canEdit="false" showIf="$readonly() == false || internalConsumers.length > 0"/>
+			<panel-related field="externalConsumers" showIf="$readonly() == false || externalConsumers > 0"/>
+			<panel-related field="documents" title="Attached documents" canSelect="true" canNew="true" showIf="$readonly() == false || documents > 0"/>
 		</panel-tabs>
 	</form>
 

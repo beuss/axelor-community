@@ -14,9 +14,9 @@
 			<field name="responsibles" title="Responsibles" widget="TagSelect" colSpan="12" canNew="false" form-view="employee-form"/>
 		</panel>
 		<panel-tabs hideIf="id == null">
-			<panel-related field="documents" title="Documents"/>
-			<panel-related field="inputData" title="Input data" form-view="qms-process-input-data-form" canNew="true"/>
-			<panel-related field="outputData" title="Output data" form-view="qms-process-output-data-form" canNew="true"/>
+			<panel-related field="documents" title="Documents" showIf="$readonly() == false || documents.length > 0"/>
+			<panel-related field="inputData" title="Input data" form-view="qms-process-input-data-form" canNew="true" showIf="$readonly() == false || inputData.length > 0"/>
+			<panel-related field="outputData" title="Output data" form-view="qms-process-output-data-form" canNew="true" showIf="$readonly() == false || outputData.length > 0"/>
 		</panel-tabs>
 	</form>
 

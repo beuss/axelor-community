@@ -8,7 +8,7 @@
 		</panel>
 	</form>
 
-	<grid name="qms-external-endpoint-grid" title="Qms external endpoints" model="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint" edit-icon="true">
+	<grid name="qms-external-endpoint-grid" title="QMS External Endpoints" model="fr.stlrconseil.apps.qms.db.QMSExternalEndpoint" edit-icon="true">
 		<field name="title"/>
 	</grid>
 </object-views>
