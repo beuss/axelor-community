@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.axelor.apps.base.db.Company;
-import com.axelor.apps.base.db.IAdministration;
+import com.axelor.apps.base.db.repo.SequenceRepository;
 import com.axelor.apps.base.service.administration.SequenceService;
 import com.axelor.exception.AxelorException;
 import com.axelor.exception.db.IException;
@@ -34,7 +34,7 @@ public class ImprovementFormServiceImpl implements ImprovementFormService {
 			logger.debug("Fetching next improvement form sequence value for company " + company.getCode());
 		}
 
-		String sequence = sequenceService.getSequenceNumber(IAdministration.QMS_IMPROVEMENT_FORM, company);
+		String sequence = sequenceService.getSequenceNumber(SequenceRepository.QMS_IMPROVEMENT_FORM, company);
 		if(sequence == null) {
 			throw new AxelorException(company, IException.CONFIGURATION_ERROR, I18n.get(IExceptionMessage.IMPROVEMENT_FORM_MISSING_SEQUENCE), company.getName());
 		}
