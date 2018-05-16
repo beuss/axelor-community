@@ -17,6 +17,22 @@
 			return sourceType == QMSProcessDataSourceType.INTERNAL ? getInternalSource().getTitle() : getExternalSource().getTitle();
 		]]>
 		</string>
+		<string name="consumers" title="Consumers" readonly="true">
+		<![CDATA[
+			java.util.List<String> l = new java.util.LinkedList<String>();
+			if(getInternalConsumers() != null) {
+				for(fr.stlrconseil.apps.qms.db.QMSProcess process : getInternalConsumers()) {
+					l.add(process.getTitle());
+				}
+			}
+			if(getExternalConsumers() != null) {
+				for(fr.stlrconseil.apps.qms.db.QMSExternalEndpoint endpoint : getExternalConsumers()) {
+					l.add(endpoint.getTitle());
+				}
+			}
+			return org.apache.commons.lang3.StringUtils.join(l, ", ");
+		]]>
+		</string>
 
 		<string name="title" nullable="false" required="true" namecolumn="true"/>
 		<string name="expectations" nullable="false" required="true" large="true"/>
