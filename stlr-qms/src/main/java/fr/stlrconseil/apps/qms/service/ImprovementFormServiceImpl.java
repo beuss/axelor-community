@@ -10,7 +10,7 @@ import com.axelor.apps.base.db.Company;
 import com.axelor.apps.base.db.repo.SequenceRepository;
 import com.axelor.apps.base.service.administration.SequenceService;
 import com.axelor.exception.AxelorException;
-import com.axelor.exception.db.IException;
+import com.axelor.exception.db.repo.TraceBackRepository;
 import com.axelor.i18n.I18n;
 import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
@@ -36,7 +36,7 @@ public class ImprovementFormServiceImpl implements ImprovementFormService {
 
 		String sequence = sequenceService.getSequenceNumber(SequenceRepository.QMS_IMPROVEMENT_FORM, company);
 		if(sequence == null) {
-			throw new AxelorException(company, IException.CONFIGURATION_ERROR, I18n.get(IExceptionMessage.IMPROVEMENT_FORM_MISSING_SEQUENCE), company.getName());
+			throw new AxelorException(company, TraceBackRepository.CATEGORY_CONFIGURATION_ERROR, I18n.get(IExceptionMessage.IMPROVEMENT_FORM_MISSING_SEQUENCE), company.getName());
 		}
 		return sequence;
 	}
